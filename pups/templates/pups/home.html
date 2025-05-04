@@ -1,0 +1,268 @@
+{% load static %}
+{% load form_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Timrottiez is a small kennel specializing in healthy, confident Rottweiler puppies for loving homes.">
+    <meta name="keywords" content="rottweiler medan, anjing medan, rottweiler puppy medan, jual anjing medan, beli anjing medan, beli rottweiler medan, puppy medan, rottweiler">
+    <meta name="author" content="Timrottiez Kennel Medan">
+    <title>Timrottiez Kennel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- AOS.css
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">-->
+    <!--Lightbox-->
+    <link href="{% static 'lightbox2/css/lightbox.css' %}" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</head>
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'lightbox2/js/lightbox.js' %}"></script>
+
+<!-- AOS CSS
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+-->
+
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand ps-5" href="{% url 'home' %}">
+            <img src="{% static 'img/timrottiez_logo.png' %}" alt="Timrottiez Logo" height="100">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="#" class="nav-link">Articles</a></li>
+                <li class="nav-item"><a href="#available-puppies" class="nav-link">Puppies</a></li>
+                <li class="nav-item"><a href="{% url 'gallery' %}" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero d-flex align-items-center justify-content-center text-center">
+    <div class="hero-text">
+        <h1 class="display-4 fw-bold text-white">Sahabat Rottweiler Anda</h1>
+        <p class="lead">Di Timrottiez, Setiap puppy bukan hanya hewan peliharaan — tapi teman setia yang siap menjadi bagian dari keluarga Anda.</p>
+        <a href="#available-puppies" class="btn btn-lg btn-warning mt-4 px-5 py-3 fw-bold shadow">Cari Puppy Anda Sekarang!</a>
+    </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about" class="about-section-wrapper">
+    <div class="about-section text-center py-5">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="underline mx-auto my-3"></div>
+            <p class="about-text mx-auto">
+                Welcome to Timrottiez!
+                Selamat datang di <strong>Timrottiez Kennel</strong> – pusat jual beli <strong>Rottweiler di Medan</strong> yang terpercaya. Kami adalah kennel kecil namun berdedikasi tinggi dalam membesarkan <strong>anjing Rottweiler</strong> dengan perhatian penuh terhadap kesehatan, temperamen, dan kecerdasan.
+                <br><br>
+                Setiap puppy Rottweiler kami dirawat dengan penuh kasih, dibesarkan di lingkungan keluarga, dan disiapkan untuk menjadi sahabat setia yang melindungi rumah Anda.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Puppies Section -->
+<section id="puppies" class="featured-section py-5">
+    <div class="container">
+        <h2 class="section-title text-center">Our Dogs</h2>
+        <div class="underline mx-auto my-3"></div>
+
+        {% for pup in pups %}
+        <div class="pup-card-wrapper {% if forloop.counter|divisibleby:2 %}flex-row-reverse{% endif %}">
+            <img src="{{ pup.image.url }}" alt="{{ pup.name }}" class="pup-card-image">
+            <div class="pup-card-text">
+                <h5>{{ pup.name }}</h5>
+                <p><strong>Breed:</strong> {{ pup.breed }}</p>
+                <p>{{ pup.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+<!-- Available Puppies Section -->
+<section id="available-puppies" class="available-section carousel-bg text-center py-5">
+    <div class="container">
+        <h2 class="section-title">Available Puppies</h2>
+        <div class="underline mx-auto my-3"></div>
+
+        <!-- Carousel Container Centered -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 mx-auto">
+
+                <!-- Bootstrap Carousel -->
+                <div id="puppyCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for pup in available_pups %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ pup.image.url }}" class="d-block img-fluid puppy-carousel-img" alt="{{ pup.name }}">
+                             <!-- Captions -->
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 px-3 py-2 mt-3">
+                                <h5>{{ pup.name }}</h5>
+                                <p><strong>{{ pup.description }}</strong></p>
+                                <p><strong>Born:</strong> {{ pup.dob|date:"F j, Y" }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                     <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#puppyCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#puppyCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+
+                <!-- Thumbnails -->
+                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                    {% for pup in available_pups %}
+                    <img src="{{ pup.image.url }}" class="puppy-thumbnail" data-bs-target="#puppyCarousel" data-bs-slide-to="{{ forloop.counter0 }}">
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="gallery-section text-center py-5" style="background-color: #fefaf2;">
+    <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="underline mx-auto my-3"></div>
+
+        <div class="row justify-content-center">
+            {% for image in gallery_images %}
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+                <a href="{{ image.image.url }}" data-lightbox="gallery" data-title="Rottweiler Medan - Timrottiez Kennel">
+                    <img src="{{ image.image.url }}" class="img-fluid rounded shadow-sm" alt="Gallery Image">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section py-5">
+  <div class="container" id="contact-form-section">
+    <h2 class="section-title text-center">Contacts</h2>
+    <div class="underline mx-auto my-3"></div>
+
+    <div class="row mt-5 align-items-start">
+      <!-- Left Column: Info + Map -->
+      <div class="col-md-6">
+        <p>If you have any questions or need more info, feel free to get in touch with us.</p>
+        <ul class="list-unstyled">
+          <li><strong>Address</strong><br>Jl. Turi no.134 <br>Medan, Sumatera Utara <br>20218</li>
+          <li class="mt-3"><strong>Contacts</strong><br>+6285221541775<br>timrottiez@gmail.com</li>
+        </ul>
+
+        <!-- Embedded Google Map -->
+        <div class="map-responsive mt-3">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4765.0476251707305!2d98.70222947570905!3d3.562771450469298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303130f582d26ad3%3A0x332b0536577b409e!2sJl.%20Turi%20No.134%2C%20Sudirejo%20I%2C%20Kec.%20Medan%20Kota%2C%20Kota%20Medan%2C%20Sumatera%20Utara%2020226!5e1!3m2!1sen!2sid!4v1746267197719!5m2!1sen!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Form -->
+      <div class="col-md-6">
+        <div class="bg-white p-4 rounded shadow-sm">
+            <p class="text-muted">Ingin <strong>beli anjing Rottweiler di Medan</strong>? Hubungi kami sekarang untuk konsultasi gratis dan info puppy terbaru!</p>
+            <!-- ✅ Success message here -->
+                {% if submitted %}
+                  <div class="alert alert-success">
+                    Thank you! Your message has been sent successfully.
+                  </div>
+                {% endif %}
+          <form method="post" action="#contact-form-section" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.name.label_tag }}
+                {{ form.name|add_class:"form-control" }}
+                {% for error in form.name.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ form.phone.label_tag }}
+                {{ form.phone|add_class:"form-control" }}
+                {% for error in form.phone.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                {{ form.email|add_class:"form-control" }}
+                {% for error in form.email.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ form.message.label_tag }}
+                {{ form.message|add_class:"form-control" }}
+                {% for error in form.message.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+          <!-- reCAPTCHA field -->
+            <div class="mb-3">
+                {{ form.captcha }}
+                {% for error in form.captcha.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-danger w-100 text-uppercase fw-bold">Submit</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="text-center text-muted py-4" style="background-color: #fefaf2;">
+    <small class="d-block mb-3">
+        Timrottiez Kennel – Trusted Rottweiler Puppies in Medan | +62 852-2154-1775
+    </small>
+    <h6 class="mb-3 text-dark">Follow Us</h6>
+    <div class="d-flex justify-content-center gap-3">
+        <a href="https://www.instagram.com/timrottiezkennel?igsh=MWRuNTFxeWUzM3J4cw==" rel="noopener noreferrer" target="_blank" class="social-icon rounded-circle d-flex align-items-center justify-content-center"
+           style="background-color: #ffb200; width: 40px; height: 40px;">
+            <i class="fab fa-instagram text-white"></i>
+        </a>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

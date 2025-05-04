@@ -1,0 +1,320 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+.hero {
+    background: url("../img/hero_bg.png") center center / cover no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    padding-top: 100px;
+}
+
+.hero-text {
+    padding-left: 5%;
+}
+
+.hero h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.btn-orange {
+    background-color: #f8a100;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-orange:hover {
+    background-color: #dd8700;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #4b2e2e !important;
+}
+
+.navbar-nav .nav-link {
+    color: #333 !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f8a100 !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.about-section-wrapper {
+    background-color: #fefaf2;
+    background-image: url("../img/aboutme_bg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.about-section {
+    position: relative;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4b2e2e;
+}
+
+.underline {
+    width: 60px;
+    height: 4px;
+    background-color: #f8a100;
+    border-radius: 2px;
+}
+
+.about-text {
+    max-width: 700px;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.featured-section {
+    background-image: url("../img/paw_bone.png");
+    background-size: cover;               /* make it scale edge-to-edge */
+    background-repeat: no-repeat;         /* don't tile if using large image */
+    background-position: center;
+    background-attachment: fixed;         /* ✅ adds parallax scroll */
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+.featured-section .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4b2e2e;
+}
+
+.featured-section .underline {
+    width: 60px;
+    height: 4px;
+    background-color: #f8a100;
+    border-radius: 2px;
+}
+
+.pup-card {
+    background-color: #fdf9ee;
+    border-radius: 8px;
+    color: #555;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.pup-card h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.pup-image {
+    height: auto;                /* Let it scale naturally */
+    max-height: 300px;           /* Limit max height */
+    width: 100%;
+    object-fit: contain;         /* ✅ Don't crop */
+    border-radius: 8px;
+}
+
+.pup-card-wrapper {
+    background-color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08); /* Keep only one */
+}
+
+.pup-card-image {
+    flex: 1 1 15%;
+    max-width: 15%;
+    height: 250px;
+    object-fit: contain;       /* ✅ show full image */
+    object-position: center;   /* ✅ center it nicely */
+    background-color: #fefaf2; /* optional: match the card background */
+    border-radius: 4px;
+}
+
+.pup-card-text {
+    flex: 1 1 75%;
+    max-width: 75%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pup-card-text h5 {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.pup-card-text p {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.pup-card-text a {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #f8a100;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .featured-section {
+        background-attachment: scroll;
+    }
+}
+
+.available-section .carousel {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.available-section .carousel-item img {
+    height: 400px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.puppy-thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.puppy-thumbnail:hover {
+    border-color: #f8a100;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-height: 2000px; /* Adjust as needed */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel-bg {
+    background-color: #fefaf2;
+    background-image: url("../img/aboutme_bg.png"); /* or your new bone-paw pattern */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.puppy-carousel-img {
+    max-height: 500px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.puppy-thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+.puppy-thumbnail:hover {
+    opacity: 1;
+    border: 2px solid #f8a100;
+}
+.carousel-caption {
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 80%;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    font-size: 0.95rem;
+    line-height: 1.3;
+}
+.carousel-caption h5 {
+    font-weight: bold;
+    color: #f8a100;
+}
+
+.gallery-section {
+    background-image: url("../img/paw_bone.png");
+    background-size: cover;               /* make it scale edge-to-edge */
+    background-repeat: no-repeat;         /* don't tile if using large image */
+    background-position: center;
+    background-attachment: fixed;         /* ✅ adds parallax scroll */
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+.gallery-img {
+    object-fit: cover;
+    height: 180px;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+
+.contact-section {
+  background-color: #fffaf2;
+}
+
+.contact-section .section-title {
+  font-weight: 700;
+  color: #4b2e2e;
+}
+
+.contact-section .underline {
+  width: 60px;
+  height: 4px;
+  background-color: #f8a100;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.map-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
